@@ -1,0 +1,61 @@
+package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.controladores;
+
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarFormatosACUIntPort;
+import co.edu.unicauca.asae.cleanarquitecture.dominio.casosDeUso.GestionarFormatosACUAdapter;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTOPeticion.FormatoADTOPeticion;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTORespuesta.FormatoADTORespuesta;
+import lombok.AllArgsConstructor;
+
+@Controller
+@RequestMapping("/api/formatos")
+@CrossOrigin(origins = "http://localhost:4200/")
+@AllArgsConstructor
+public class FormatoARestController {
+
+    private GestionarFormatosACUIntPort service;
+
+    @PostMapping()
+    public ResponseEntity<FormatoADTORespuesta> save(@RequestBody FormatoADTOPeticion objFormato) {
+
+        FormatoADTORespuesta respuesta = service.crear();
+        return ResponseEntity.ok(respuesta);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FormatoADTORespuesta> findById(@PathVariable int id) {
+        Optional<FormatoADTORespuesta> respuesta = service.findById(id);
+        return respuesta.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/rango-fechas")
+    public ResponseEntity<Collection<FormatoADTORespuesta>> findByRangoFechas(
+            @RequestParam LocalDate fechaInicio,
+            @RequestParam LocalDate fechaFin) {
+        Optional<Collection<FormatoADTORespuesta>> respuesta = service.findByRangoFechas(fechaInicio, fechaFin);
+        return respuesta.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<Collection<FormatoADTORespuesta>> findAll() {
+        Optional<Collection<FormatoADTORespuesta>> respuesta = service.findAll();
+        return respuesta.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+}
+
