@@ -1,5 +1,7 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.mappers;
 
+import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.FormatoA;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTOPeticion.FormatoADTOPeticion;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,9 +17,10 @@ public interface FormatoAMapper {
     FormatoPP toFormatoPP(FormatoPPDTOPeticion formato);
     
     @Mapping(target = "idFormatoA", ignore = true)
-    FormatoTI toFOrmatoTI(FormatoTIDTOPeticion formato);
+    FormatoTI toFormatoTI(FormatoTIDTOPeticion formato);
 
-
+    @Mapping(target = "idFormatoA", ignore = true)
+    FormatoA toFormatoA(FormatoADTOPeticion formato);
 
 
 

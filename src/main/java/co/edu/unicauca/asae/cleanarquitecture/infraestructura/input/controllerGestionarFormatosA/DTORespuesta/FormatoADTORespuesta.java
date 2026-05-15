@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "tipo")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = FormatoPPDTORespuesta.class, name = "PP"),
-    @JsonSubTypes.Type(value = FormatoTIDTORespuesta.class, name = "TI")
+    @JsonSubTypes.Type(value = FormatoATIDTORespuesta.class, name = "TI")
 })
 public class FormatoADTORespuesta {
 

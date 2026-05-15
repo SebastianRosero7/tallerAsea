@@ -1,7 +1,10 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.controladores;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Optional;
 
+import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.FormatoA;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,13 +32,12 @@ public class FormatoARestController {
 
     @PostMapping()
     public ResponseEntity<FormatoADTORespuesta> save(@RequestBody FormatoADTOPeticion objFormato) {
-
-        FormatoADTORespuesta respuesta = service.crear();
+        FormatoADTORespuesta respuesta = service.crear(objFormato);
         return ResponseEntity.ok(respuesta);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FormatoADTORespuesta> findById(@PathVariable int id) {
+    public ResponseEntity<FormatoADTORespuesta> findById(@PathVariable Long id) {
         Optional<FormatoADTORespuesta> respuesta = service.findById(id);
         return respuesta.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
