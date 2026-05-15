@@ -15,23 +15,23 @@ import co.edu.unicauca.asae.cleanarquitecture.service.ObservacionService;
 @SpringBootApplication
 public class TallerjpaApplication implements CommandLineRunner {
 
-	@Autowired
-    private FormatoPPService serviceFormatoPP;
-	
-	@Autowired
-    private FormatoTIService serviceFormatoTi;
-
-	@Autowired
-	private DocenteService serviceDocente;
-
-	@Autowired
-	private ObservacionService serviceObservacion;
-
-	@Autowired
-	private FormatoAService formatoAService;
-
-	@Autowired
-	private EvaluacionService evaluacionService;
+//	@Autowired
+//    private FormatoPPService serviceFormatoPP;
+//
+//	@Autowired
+//    private FormatoTIService serviceFormatoTi;
+//
+//	@Autowired
+//	private DocenteService serviceDocente;
+//
+//	@Autowired
+//	private ObservacionService serviceObservacion;
+//
+//	@Autowired
+//	private FormatoAService formatoAService;
+//
+//	@Autowired
+//	private EvaluacionService evaluacionService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TallerjpaApplication.class, args);
@@ -53,7 +53,7 @@ public class TallerjpaApplication implements CommandLineRunner {
 		//formatoAService.formatoADeatils("PP prueba5");
 		//formatoAService.formatoAexist("PP prueba5");
 		//formatoAService.agregarEstado(9, "rechazado");
-		serviceDocente.docenteExist("daniel@gmail.com");
+		//serviceDocente.docenteExist("daniel@gmail.com");
 	}
 
 }

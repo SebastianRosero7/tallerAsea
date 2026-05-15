@@ -24,7 +24,6 @@ public class GestionarFormatosACUAdapter implements GestionarFormatosACUIntPort 
     private GestionarFormatosPPGatewayIntPort formatosPPGatewayIntPort;
     @Autowired
     private GestionarFormatosTIGatewayIntPort formatosTIGatewayIntPort;
-    @Autowired
     private FormatoAMapper formatoAMapper;
 
     @Override
