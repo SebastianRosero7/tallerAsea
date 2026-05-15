@@ -23,7 +23,7 @@ public class FormatoTIService {
 
     @Transactional
 	@ReadOnlyProperty
-	public void crearFormatoTi(String titulo, String obj, String asesor, String est, String est2,int idDoc){
+	public void crearFormatoTi(String titulo, String obj, String asesor, String est, String est2,Long idDoc){
 		FormatoTIEntity f = new FormatoTIEntity();
 
         f.setTitulo("TI " + titulo);

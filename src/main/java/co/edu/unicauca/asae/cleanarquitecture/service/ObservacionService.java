@@ -35,9 +35,9 @@ public class ObservacionService {
     private FormatoARepository formatoARepository;
 
     @Transactional
-    public void crear(int  idFormato, int idDoc, String obs) {
+    public void crear(int  idFormato, Long idDoc, String obs) {
 
-        List<Integer> idsDocentes = List.of(idDoc);
+        List<Long> idsDocentes = List.of(idDoc);
 
         EvaluacionEntity evaluacion = new EvaluacionEntity();
         evaluacion.setConcepto("Formulado con observaciones");
@@ -47,7 +47,7 @@ public class ObservacionService {
         EvaluacionEntity evaluacionGuardada = evaluacionRepository.save(evaluacion);
 
         List<DocenteEntity> docentes = new ArrayList<>();
-        for (Integer idDocente : idsDocentes) {
+        for (Long idDocente : idsDocentes) {
             docentes.add(docenteRepository.getReferenceById(idDocente));
         }
 

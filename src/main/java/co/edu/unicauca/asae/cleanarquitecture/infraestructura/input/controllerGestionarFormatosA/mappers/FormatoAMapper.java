@@ -15,7 +15,7 @@ public interface FormatoAMapper {
 
     @Mapping(target = "idFormatoA", ignore = true)
     FormatoPP toFormatoPP(FormatoPPDTOPeticion formato);
-    
+
     @Mapping(target = "idFormatoA", ignore = true)
     FormatoTI toFormatoTI(FormatoTIDTOPeticion formato);
 

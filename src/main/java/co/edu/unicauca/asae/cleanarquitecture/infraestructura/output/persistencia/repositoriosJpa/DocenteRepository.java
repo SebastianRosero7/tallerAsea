@@ -3,13 +3,16 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistenc
 import java.util.List;
 import java.util.Optional;
 
+import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.Docente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.DocenteEntity;
+import org.springframework.stereotype.Repository;
 
-public interface DocenteRepository extends JpaRepository<DocenteEntity,Integer> {
+@Repository
+public interface DocenteRepository extends JpaRepository<DocenteEntity,Long> {
     @Query("SELECT DISTINCT d FROM DocenteEntity d " +
         "JOIN FETCH d.historicos h " +
         "JOIN FETCH h.objRol r " +
@@ -33,4 +36,13 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity,Integer> 
         WHERE d.correo = :correoDocente
         """, nativeQuery = true)
     Long docenteExiste(@Param("correoDocente") String correo);
+
+    @Query("SELECT d FROM DocenteEntity d " +
+            "WHERE lower(d.nombreGrupo) = lower(:nombreGrupo) " +
+            "AND lower(d.apellidosDocente) LIKE lower(concat(:patron, '%')) " +
+            "ORDER BY lower(d.apellidosDocente) ASC")
+    List<DocenteEntity> findByNombreGrupoAndApellidosStartingWithIgnoreCase(
+            @Param("nombreGrupo") String nombreGrupo,
+            @Param("patron") String patron
+    );
 }

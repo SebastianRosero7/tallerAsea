@@ -29,7 +29,7 @@ public class FormatoPPService {
         f.setObjetivoGeneral(obj);
         f.setObjetivosEspecificos("Específicos");
 
-        DocenteEntity d = docenteRepository.findById(idDoc).orElse(null);
+        DocenteEntity d = docenteRepository.findById(Long.parseLong(String.valueOf(idDoc))).orElse(null);
 
         EstadoEntity e = new EstadoEntity();
 

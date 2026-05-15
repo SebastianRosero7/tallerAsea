@@ -20,7 +20,7 @@ public class DocenteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDocente;
+    private Long idDocente;
 
     @Column(name = "nombres_docente", length = 100)
     private String nombresDocente;
@@ -39,4 +39,6 @@ public class DocenteEntity {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "objDocente")
     private Set<FormatoAEntity> formatosA;
+
+
 }
