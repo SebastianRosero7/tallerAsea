@@ -13,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 public class DocenteDTOPeticion {
 
-    private Long idDocente;
-
     @NotBlank(message = "El nombre del docente es obligatorio")
     private String nombresDocente;
 
@@ -27,7 +25,4 @@ public class DocenteDTOPeticion {
     @Email(message = "El correo del docente debe ser una dirección de correo electrónico válida")
     private String correo;
 
-    private List<HistoricoDTOPeticion> historicos;
-
-    private List<FormatoADTOPeticion> formatosA;
 }

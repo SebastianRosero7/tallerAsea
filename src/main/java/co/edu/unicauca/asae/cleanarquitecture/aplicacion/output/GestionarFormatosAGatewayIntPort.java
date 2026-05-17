@@ -1,12 +1,8 @@
 package co.edu.unicauca.asae.cleanarquitecture.aplicacion.output;
 
-import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.FormatoA;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.FormatoAEntity;
 
 public interface GestionarFormatosAGatewayIntPort {
-
-
-    public FormatoA guardar(FormatoA formato);
-
-
-
+    public FormatoAEntity guardar(FormatoAEntity formato);
+    public boolean tituloFormatoExiste(String nombre);
 }

@@ -1,8 +1,7 @@
 package co.edu.unicauca.asae.cleanarquitecture.aplicacion.output;
 
-import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.FormatoA;
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTORespuesta.FormatoADTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.FormatoTIEntity;
 
 public interface GestionarFormatosTIGatewayIntPort {
-    public FormatoADTORespuesta guardar(FormatoA formato);
+    public FormatoTIEntity guardar(FormatoTIEntity formato);
 }

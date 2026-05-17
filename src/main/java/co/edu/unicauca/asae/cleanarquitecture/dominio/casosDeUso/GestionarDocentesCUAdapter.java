@@ -1,22 +1,25 @@
 package co.edu.unicauca.asae.cleanarquitecture.dominio.casosDeUso;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarDocentesCUIntPort;
+import co.edu.unicauca.asae.cleanarquitecture.aplicacion.output.GestionarDocentesGatewayIntPort;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.mappers.DocenteMapper;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.DocenteEntity;
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.repositoriosJpa.DocenteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.List;
 
 @Service
 public class GestionarDocentesCUAdapter implements GestionarDocentesCUIntPort {
 
     @Autowired
-    private DocenteRepository docenteRepository;
+    private GestionarDocentesGatewayIntPort docentesGatewayIntPort;
 
     @Autowired
     private DocenteMapper docenteMapper;
@@ -24,26 +27,30 @@ public class GestionarDocentesCUAdapter implements GestionarDocentesCUIntPort {
     @Override
     public DocenteDTORespuesta crear(DocenteDTOPeticion docente) {
         DocenteEntity entity = docenteMapper.toEntity(docente);
-        DocenteEntity guardado = docenteRepository.save(entity);
+        if(docentesGatewayIntPort.correoDocenteExiste(entity.getCorreo()) == 1){
+            throw new ResponseStatusException(HttpStatus.CONFLICT ,"correo duplicado");
+        }
+        
+        DocenteEntity guardado = docentesGatewayIntPort.guardar(entity);
         return docenteMapper.toDTORespuesta(guardado);
     }
 
     @Override
     public Collection<DocenteDTORespuesta> listarDocentes(String nombreGrupo, String patron) {
         if(nombreGrupo != null || patron != null){
-            List<DocenteEntity> docentes = docenteRepository.findByNombreGrupoAndApellidosStartingWithIgnoreCase(nombreGrupo, patron);
+            List<DocenteEntity> docentes = docentesGatewayIntPort.listarDocenteByGrupo(nombreGrupo, patron);
             return docentes.isEmpty() ? List.of() : docentes.stream()
                     .map(docenteMapper::toDTORespuesta)
                     .toList();
         }
-        return docenteRepository.findAll().stream()
+        return docentesGatewayIntPort.listarTodo().stream()
                 .map(docenteMapper::toDTORespuesta)
                 .toList();
     }
 
     @Override
     public DocenteDTORespuesta findById(Long id) {
-        return docenteRepository.findById(id)
+        return docentesGatewayIntPort.docenteById(id)
                 .map(docenteMapper::toDTORespuesta)
                 .orElse(null);
     }
