@@ -1,4 +1,4 @@
-package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTOPeticion;
+package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

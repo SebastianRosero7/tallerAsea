@@ -1,4 +1,4 @@
-package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTORespuesta;
+package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

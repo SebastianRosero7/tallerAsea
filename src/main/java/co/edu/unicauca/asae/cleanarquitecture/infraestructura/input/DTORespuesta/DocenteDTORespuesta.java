@@ -1,7 +1,7 @@
-package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTORespuesta;
+package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta;
 
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTOPeticion.FormatoADTOPeticion;
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.DTOPeticion.HistoricoDTOPeticion;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoADTOPeticion;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.HistoricoDTOPeticion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

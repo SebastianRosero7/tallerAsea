@@ -1,4 +1,4 @@
-package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionarFormatosA.controladores;
+package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controladores;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
