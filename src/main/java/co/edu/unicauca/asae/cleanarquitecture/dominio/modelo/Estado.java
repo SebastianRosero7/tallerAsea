@@ -5,7 +5,7 @@ import java.util.Date;
 public class Estado {
     private int idEstado;
 
-    private String estadoActual;;
+    private String estadoActual;
 
     private Date fechaRegistroEstado;
 

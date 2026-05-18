@@ -10,7 +10,7 @@ public class FormatoPP extends FormatoA{
     
     private String ruta_carta_aceptacion;
 
-    public FormatoPP(int idFormatoA, String titulo, String objetivoGeneral,
+    public FormatoPP(Long idFormatoA, String titulo, String objetivoGeneral,
                  String objetivosEspecificos, Estado objEstado,
                  Docente objDocente, List<Evaluacion> evaluaciones,
                  String nombreAsesor, String nombreEstudiante1,

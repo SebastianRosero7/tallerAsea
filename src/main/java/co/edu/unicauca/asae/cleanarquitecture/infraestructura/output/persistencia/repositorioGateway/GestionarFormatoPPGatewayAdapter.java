@@ -8,7 +8,7 @@ import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistenci
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.repositoriosJpa.FormatoPPRepository;
 
 @Repository
-public class GestionarFormatoPPGateweyAdapter implements GestionarFormatosPPGatewayIntPort{
+public class GestionarFormatoPPGatewayAdapter implements GestionarFormatosPPGatewayIntPort{
     @Autowired
     private FormatoPPRepository repository;
 

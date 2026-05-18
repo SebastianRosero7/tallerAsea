@@ -40,4 +40,14 @@ public class GestionarDocentesGatewayAdapter implements GestionarDocentesGateway
         return repository.docenteExiste(correo);
     }
 
+    @Override
+    public DocenteEntity obtenerReferencia(Long idDocente) {
+       return repository.getReferenceById(idDocente);
+    }
+
+    @Override
+    public boolean docenteExiste(Long idDocente) {
+        return repository.existsById(idDocente);
+    }
+
 }

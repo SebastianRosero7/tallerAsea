@@ -48,7 +48,7 @@ public class FormatoAService {
 
             for (ObservacionEntity observacionEntity : evaluacionEntity.getObservaciones()) {
                 
-                System.out.println("OBSERVACIONES: "+observacionEntity.getObservcaion());
+                System.out.println("OBSERVACIONES: "+observacionEntity.getObservcion());
                 
                 for (DocenteEntity docenteEntity : observacionEntity.getDocentes()) {
                     System.out.println("HECHA POR: "+docenteEntity.getNombresDocente());
@@ -69,7 +69,7 @@ public class FormatoAService {
     }
 
     @Transactional
-    public void agregarEstado(int idFormato, String nuevoEstado) {
+    public void agregarEstado(Long idFormato, String nuevoEstado) {
         FormatoAEntity formato = formatoARepository.findById(idFormato)
                 .orElseThrow(() -> new RuntimeException("Formato no encontrado"));
 

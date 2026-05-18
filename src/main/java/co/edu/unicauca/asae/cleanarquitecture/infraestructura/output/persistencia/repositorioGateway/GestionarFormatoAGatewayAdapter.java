@@ -24,6 +24,16 @@ public class GestionarFormatoAGatewayAdapter implements GestionarFormatosAGatewa
         return repository.formatoAExiste(titulo) == 1;
     }
 
+    @Override
+    public FormatoAEntity obtenerReferencia(Long idFormato) {
+        return repository.getReferenceById(idFormato);
+    }
+
+    @Override
+    public boolean existeFormatoId(Long idFormato) {
+        return repository.existsById(idFormato);
+    }
+
 
 
 

@@ -1,17 +1,21 @@
 package co.edu.unicauca.asae.cleanarquitecture.dominio.modelo;
 
+import java.util.List;
 
 public class Rol {
     private int idRol;
 
     private String roleAsignado;
 
+    private List<Historico> historicos;
+
     public Rol() {
     }
 
-    public Rol(int idRol, String roleAsignado) {
+    public Rol(int idRol, String roleAsignado,List<Historico> historicos) {
         this.idRol = idRol;
         this.roleAsignado = roleAsignado;
+        this.historicos = historicos;
     }
 
     public int getIdRol() {
@@ -30,4 +34,7 @@ public class Rol {
         this.roleAsignado = roleAsignado;
     }
 
+    public List<Historico> getHistoricos() {
+        return this.historicos;
+    }
 }

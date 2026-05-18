@@ -12,4 +12,6 @@ public interface GestionarDocentesGatewayIntPort {
     List<DocenteEntity> listarTodo();
     Optional<DocenteEntity> docenteById(Long id);
     Long correoDocenteExiste(String correo);
+    DocenteEntity obtenerReferencia(Long idDocente);
+    boolean docenteExiste(Long idDocente);
 }

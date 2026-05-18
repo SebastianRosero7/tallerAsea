@@ -16,17 +16,20 @@ public class Evaluacion {
 
     private List<Observacion> observaciones;
 
+    private FormatoA objFormatoA;
+
     public Evaluacion() {
     }
 
     public Evaluacion(int idEvaluacion, String concepto,
                     Date fechaRegistroConcepto, String nombreCordinador,
-                    List<Observacion> observaciones) {
+                    List<Observacion> observaciones, FormatoA objFormatoA) {
         this.idEvaluacion = idEvaluacion;
         this.concepto = concepto;
         this.fechaRegistroConcepto = fechaRegistroConcepto;
         this.nombreCordinador = nombreCordinador;
         this.observaciones = observaciones;
+        this.objFormatoA = objFormatoA;
     }
 
     public int getIdEvaluacion() {
@@ -67,6 +70,14 @@ public class Evaluacion {
 
     public void setObservaciones(List<Observacion> observaciones) {
         this.observaciones = observaciones;
+    }
+
+    public FormatoA getObjFormatoA() {
+        return this.objFormatoA;
+    }
+
+    public void setObjFormatoA(FormatoA formatoA) {
+        this.objFormatoA= formatoA;
     }
 
 }

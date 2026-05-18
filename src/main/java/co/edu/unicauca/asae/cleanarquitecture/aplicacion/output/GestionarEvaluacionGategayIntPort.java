@@ -1,0 +1,8 @@
+package co.edu.unicauca.asae.cleanarquitecture.aplicacion.output;
+
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.EvaluacionEntity;
+
+public interface GestionarEvaluacionGategayIntPort {
+
+    public EvaluacionEntity guardar(EvaluacionEntity evaluacionEntity);
+}
