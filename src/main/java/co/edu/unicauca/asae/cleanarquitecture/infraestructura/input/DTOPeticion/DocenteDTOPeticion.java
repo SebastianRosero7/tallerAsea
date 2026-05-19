@@ -18,6 +18,7 @@ public class DocenteDTOPeticion {
     @NotBlank(message = "El apellido del docente es obligatorio")
     private String apellidosDocente;
 
+    @NotBlank(message = "El nombre del grupo es obligatorio")
     private String nombreGrupo;
 
     @NotBlank(message = "El correo del docente es obligatorio")

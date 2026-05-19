@@ -3,8 +3,10 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controlador
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarDocentesCUIntPort;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.DocenteDTORespuesta;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -12,6 +14,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api/docentes")
 @CrossOrigin(origins = "*")
+@Validated
 public class DocenteRestController {
 
     @Autowired
@@ -30,7 +33,7 @@ public class DocenteRestController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crearDocente(@RequestBody DocenteDTOPeticion docente) {
+    public ResponseEntity<?> crearDocente(@Valid @RequestBody DocenteDTOPeticion docente) {
         DocenteDTORespuesta nuevoDocente = docenteService.crear(docente);
         return ResponseEntity.ok(nuevoDocente);
     }
