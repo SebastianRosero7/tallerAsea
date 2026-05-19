@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class FormatoPPDTORespuesta extends FormatoADTORespuesta {
 
-    private String cartaAceptacion;
-    private String asesor;
+    private String ruta_carta_aceptacion;
+    private String nombreAsesor;
 }

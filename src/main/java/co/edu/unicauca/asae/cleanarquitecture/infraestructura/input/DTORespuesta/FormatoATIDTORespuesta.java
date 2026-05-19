@@ -3,6 +3,7 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuest
 import lombok.Data;
 
 @Data
-public class FormatoATIDTORespuesta {
-    private String estudiante2;
+public class FormatoATIDTORespuesta extends FormatoADTORespuesta {
+    private String nombreEstudiante1;
+    private String nombreEstudiante2;
 }

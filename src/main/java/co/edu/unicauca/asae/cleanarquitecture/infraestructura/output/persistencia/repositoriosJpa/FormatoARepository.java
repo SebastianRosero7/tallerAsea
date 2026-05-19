@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.FormatoAEntity;
 
 
-public interface FormatoARepository extends JpaRepository<FormatoAEntity,Integer>{
+public interface FormatoARepository extends JpaRepository<FormatoAEntity,Long>{
     
     List<FormatoAEntity> findByObjDocenteNombresDocenteIgnoreCase(String nombreDocente);
 

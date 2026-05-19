@@ -65,7 +65,7 @@ public class DocenteService {
                 System.out.println("    -- Coordinador: " + eval.getNombreCordinador());
 
                 for (ObservacionEntity obs : eval.getObservaciones()) {
-                    System.out.println("      -- Observación: " + obs.getObservcaion());
+                    System.out.println("      -- Observación: " + obs.getObservcion());
                     System.out.println("      -- Fecha: " + obs.getFechaRegistro());
                 }
             }

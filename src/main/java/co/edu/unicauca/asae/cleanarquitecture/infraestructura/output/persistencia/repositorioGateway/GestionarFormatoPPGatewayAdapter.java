@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public class GestionarFormatoPPGateweyAdapter implements GestionarFormatosPPGatewayIntPort{
+public class GestionarFormatoPPGatewayAdapter implements GestionarFormatosPPGatewayIntPort{
     @Autowired
     private EvaluacionRepository repository;
     @Autowired

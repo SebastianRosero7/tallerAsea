@@ -30,7 +30,7 @@ public class ObservacionEntity {
     private int idObservacion;
 
     @Column(name = "observacion")
-    private String observcaion;
+    private String observcion;
 
     @Column(name = "fecha_registro_observacion")
     private Date fechaRegistro;

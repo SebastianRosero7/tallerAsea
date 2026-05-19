@@ -8,7 +8,7 @@ public class FormatoTI extends FormatoA {
     
     private String nombreEstudiante2;
 
-    public FormatoTI(int idFormatoA, String titulo, String objetivoGeneral,
+    public FormatoTI(Long idFormatoA, String titulo, String objetivoGeneral,
                  String objetivosEspecificos, Estado objEstado,
                  Docente objDocente, List<Evaluacion> evaluaciones,
                  String nombreEstudiante1, String nombreEstudiante2) {

@@ -29,7 +29,7 @@ import lombok.Setter;
 public class FormatoAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFormatoA;
+    private Long idFormatoA;
 
     @Column(length = 100, unique = true)
     private String titulo;

@@ -35,7 +35,7 @@ public class ObservacionService {
     private FormatoARepository formatoARepository;
 
     @Transactional
-    public void crear(int  idFormato, Long idDoc, String obs) {
+    public void crear(Long  idFormato, Long idDoc, String obs) {
 
         List<Long> idsDocentes = List.of(idDoc);
 
@@ -52,7 +52,7 @@ public class ObservacionService {
         }
 
         ObservacionEntity observacion = new ObservacionEntity();
-        observacion.setObservcaion(obs);
+        observacion.setObservcion(obs);
         observacion.setFechaRegistro(new Date());
         observacion.setObjEvaluacion(evaluacionGuardada);
         observacion.setDocentes(docentes);
@@ -61,7 +61,7 @@ public class ObservacionService {
     }
 
     @Transactional(readOnly = true)
-    public void listar(int idFormato) {
+    public void listar(Long idFormato) {
 
         FormatoAEntity formato = formatoARepository.findById(idFormato)
                 .orElseThrow(() -> new RuntimeException("Formato no encontrado"));
@@ -76,7 +76,7 @@ public class ObservacionService {
             System.out.println("  -- Coordinador: " + eval.getNombreCordinador());
 
             for (ObservacionEntity obs : eval.getObservaciones()) {
-                System.out.println("    -- Observación: " + obs.getObservcaion());
+                System.out.println("    -- Observación: " + obs.getObservcion());
 
                 for (DocenteEntity docente : obs.getDocentes()) {
                     System.out.println("      -- Docente: " + docente.getNombresDocente());

@@ -17,10 +17,8 @@ import lombok.NoArgsConstructor;
 })
 public class FormatoADTORespuesta {
 
-    private Integer id;
+    private Long idFormatoA;
     private String titulo;
-    private String director;
-    private String estudiante1;
     private String objetivoGeneral;
     private String objetivosEspecificos;
     private String estado;

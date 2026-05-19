@@ -12,8 +12,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class FormatoPPDTOPeticion extends FormatoADTOPeticion {
     @NotBlank
-    private String cartaAceptacion;
+    private String ruta_carta_aceptacion;
     @NotBlank
-    private String asesor;
-
+    private String nombreAsesor;
+    @NotBlank(message = "El estudiante uno es obligatorio")
+    private String nombreEstudiante1;
 }

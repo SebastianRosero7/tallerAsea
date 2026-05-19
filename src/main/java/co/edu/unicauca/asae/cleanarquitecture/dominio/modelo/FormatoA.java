@@ -4,7 +4,7 @@ import java.util.List;
 
 public class FormatoA {
 
-    private int idFormatoA;
+    private Long idFormatoA;
 
     private String titulo;
 
@@ -18,7 +18,7 @@ public class FormatoA {
 
     private List<Evaluacion> evaluaciones;
 
-    public FormatoA(int idFormatoA, String titulo, String objetivoGeneral,
+    public FormatoA(Long idFormatoA, String titulo, String objetivoGeneral,
                         String objetivosEspecificos, Estado objEstado,
                         Docente objDocente, List<Evaluacion> evaluaciones) {
         this.idFormatoA = idFormatoA;
@@ -30,11 +30,11 @@ public class FormatoA {
         this.evaluaciones = evaluaciones;
     }
 
-    public int getIdFormatoA() {
+    public Long getIdFormatoA() {
     return idFormatoA;
     }
 
-    public void setIdFormatoA(int idFormatoA) {
+    public void setIdFormatoA(Long idFormatoA) {
         this.idFormatoA = idFormatoA;
     }
 
