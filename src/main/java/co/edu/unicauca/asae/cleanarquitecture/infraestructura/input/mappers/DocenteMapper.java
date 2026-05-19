@@ -2,11 +2,18 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.mappers;
 
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.DocenteDTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.DocenteEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class DocenteMapper {
+
+    @Autowired
+    FormatoAMapper formatoAMapper;
 
     /**
      * Convierte un DTO de petición a una entidad de persistencia
@@ -34,13 +41,20 @@ public class DocenteMapper {
         if (entity == null) {
             return null;
         }
-
+        HistoricoMapper historicoMapper = new HistoricoMapper();
         DocenteDTORespuesta dto = new DocenteDTORespuesta();
         dto.setIdDocente(entity.getIdDocente());
         dto.setNombresDocente(entity.getNombresDocente());
         dto.setApellidosDocente(entity.getApellidosDocente());
         dto.setNombreGrupo(entity.getNombreGrupo());
         dto.setCorreo(entity.getCorreo());
+        dto.setHistoricos(entity.getHistoricos().stream().map(historicoMapper::toDTO).toList());
+        List<FormatoADTORespuesta> formatosA = entity.getFormatosA().stream()
+                .map(formato -> {
+                    return formatoAMapper.entityToFormatoADTORespuesta(formato);
+                })
+                .toList();
+        dto.setFormatosA(formatosA);
         // No mapear historicos ni formatosA (se cargan según sea necesario)
 
         return dto;

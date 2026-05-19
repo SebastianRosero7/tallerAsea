@@ -18,8 +18,8 @@ public class DocenteRestController {
     private GestionarDocentesCUIntPort docenteService;
 
     @GetMapping
-    public ResponseEntity<?> listarDocentes(@RequestParam(required = false) String nombreGrupo, @RequestParam(required = false) String patron) {
-        Collection<DocenteDTORespuesta> docentes = docenteService.listarDocentes(nombreGrupo, patron);
+    public ResponseEntity<?> listarDocentes(@RequestParam(required = false) String nombreGrupo, @RequestParam(required = false) String patron, @RequestParam(required = false) String nombreDocente) {
+        Collection<DocenteDTORespuesta> docentes = docenteService.listarDocentes(nombreGrupo, patron, nombreDocente);
         return ResponseEntity.ok(docentes);
     }
 

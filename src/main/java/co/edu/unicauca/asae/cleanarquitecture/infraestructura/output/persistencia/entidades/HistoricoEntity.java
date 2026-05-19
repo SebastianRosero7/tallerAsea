@@ -11,10 +11,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "historicos")
-@Data
+@Getter
+@Setter
 public class HistoricoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +30,7 @@ public class HistoricoEntity {
     @JoinColumn(name = "idfkRol",nullable = false)
     private RolEntity objRol;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idfkDocente",nullable = false)
     private DocenteEntity objDocente;
 }

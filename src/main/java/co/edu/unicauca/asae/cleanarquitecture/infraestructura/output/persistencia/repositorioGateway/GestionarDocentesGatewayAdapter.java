@@ -24,6 +24,10 @@ public class GestionarDocentesGatewayAdapter implements GestionarDocentesGateway
     public List<DocenteEntity> listarDocenteByGrupo(String nombreGrupo, String patron) {
         return repository.findByNombreGrupoAndApellidosStartingWithIgnoreCase(nombreGrupo, patron);
     }
+    @Override
+    public List<DocenteEntity> listarFormatosAByDocente(String nombreDocente){
+        return repository.findByNombresDocente(nombreDocente);
+    }
 
     @Override
     public List<DocenteEntity> listarTodo() {

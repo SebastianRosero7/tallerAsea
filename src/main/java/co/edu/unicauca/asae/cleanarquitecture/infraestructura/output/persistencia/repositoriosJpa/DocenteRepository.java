@@ -45,4 +45,8 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity,Long> {
             @Param("nombreGrupo") String nombreGrupo,
             @Param("patron") String patron
     );
+
+    @Query("SELECT d FROM DocenteEntity d " +
+            "WHERE lower(d.nombresDocente) = lower(:nombreDocente)")
+    List<DocenteEntity> findByNombresDocente(String nombreDocente);
 }

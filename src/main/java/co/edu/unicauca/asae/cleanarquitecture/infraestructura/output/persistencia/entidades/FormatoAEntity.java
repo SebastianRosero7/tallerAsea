@@ -18,11 +18,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "formatos_a")
 @Inheritance(strategy = InheritanceType.JOINED)
-@Data
+@Getter
+@Setter
 public class FormatoAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +43,10 @@ public class FormatoAEntity {
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, mappedBy = "objFormatoA")
     private EstadoEntity objEstado;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinColumn(name = "idfkDocente",nullable = false)
     private DocenteEntity objDocente;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objFormatoA")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objFormatoA")
     private Set<EvaluacionEntity> evaluaciones;
 }
