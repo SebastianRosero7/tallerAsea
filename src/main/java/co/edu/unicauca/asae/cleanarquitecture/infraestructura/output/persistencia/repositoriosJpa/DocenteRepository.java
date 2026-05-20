@@ -37,7 +37,7 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity,Long> {
         FROM docentes d
         WHERE d.correo = :correoDocente
         """, nativeQuery = true)
-    Long docenteExiste(@Param("correoDocente") String correo);
+    Long existeCorreoDocente(@Param("correoDocente") String correo);
 
     @Query("SELECT d FROM DocenteEntity d " +
             "WHERE lower(d.nombreGrupo) = lower(:nombreGrupo) " +

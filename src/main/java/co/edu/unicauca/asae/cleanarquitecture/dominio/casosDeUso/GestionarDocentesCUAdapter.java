@@ -63,4 +63,9 @@ public class GestionarDocentesCUAdapter implements GestionarDocentesCUIntPort {
                 .map(docenteMapper::toDTORespuesta)
                 .orElse(null);
     }
+
+    @Override
+    public boolean existeCorreoDocente(String correo) {
+        return docentesGatewayIntPort.correoDocenteExiste(correo) == 1;
+    }
 }

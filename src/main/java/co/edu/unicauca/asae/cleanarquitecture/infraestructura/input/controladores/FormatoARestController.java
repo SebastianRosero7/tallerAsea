@@ -4,14 +4,13 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarFormatosACUIntPort;
+import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.EstadoEnum;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoADTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADetailsDTORespuesta;
-import lombok.AllArgsConstructor;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/api/formatos")
@@ -65,6 +65,17 @@ public class FormatoARestController {
     public ResponseEntity<Optional<FormatoADetailsDTORespuesta>> formatoADetails(@RequestParam String tituloFormato){
         Optional<FormatoADetailsDTORespuesta> respuesta = service.listarFormatoADetalles(tituloFormato);
         return ResponseEntity.ok(respuesta);
+    }
+
+    @GetMapping("/existe_titulo")
+    public ResponseEntity<Boolean> existeTituloFormato(@RequestParam String tituloFormato){
+        boolean respuesta = service.existeTituloFormato(tituloFormato);
+        return ResponseEntity.ok(respuesta);
+    }
+
+    @PatchMapping("/{id}/estado")
+    public ResponseEntity<FormatoADTORespuesta> agregarEstado(@PathVariable Long id, @RequestParam EstadoEnum estado){
+        return ResponseEntity.ok(service.agregarEstado(id, estado));
     }
 
 }

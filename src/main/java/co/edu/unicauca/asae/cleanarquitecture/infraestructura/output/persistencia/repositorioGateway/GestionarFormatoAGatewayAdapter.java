@@ -42,6 +42,11 @@ public class GestionarFormatoAGatewayAdapter implements GestionarFormatosAGatewa
         return repository.formatoADetails(titulo);
     }
 
+    @Override
+    public Optional<FormatoAEntity> findById(Long id) {
+        return repository.findById(id);
+    }
+
 
 
 

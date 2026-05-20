@@ -10,4 +10,5 @@ public interface GestionarFormatosAGatewayIntPort {
     public FormatoAEntity obtenerReferencia(Long idFormato);
     public boolean existeFormatoId(Long idFormato);
     public Optional<FormatoAEntity> formatoADetalles(String titulo);
+    public Optional<FormatoAEntity> findById(Long id);
 }
