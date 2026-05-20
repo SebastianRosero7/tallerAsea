@@ -16,10 +16,13 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "observaciones")
-@Data
+@Getter
+@Setter
 public class ObservacionEntity {
 
     @Id

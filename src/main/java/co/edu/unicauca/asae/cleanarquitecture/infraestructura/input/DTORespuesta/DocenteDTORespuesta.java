@@ -17,6 +17,6 @@ public class DocenteDTORespuesta {
     private String apellidosDocente;
     private String nombreGrupo;
     private String correo;
-    private List<HistoricoDTOPeticion> historicos;
-    private List<FormatoADTOPeticion> formatosA;
+    private List<HistoricoDTORespuesta> historicos;
+    private List<FormatoADTORespuesta> formatosA;
 }

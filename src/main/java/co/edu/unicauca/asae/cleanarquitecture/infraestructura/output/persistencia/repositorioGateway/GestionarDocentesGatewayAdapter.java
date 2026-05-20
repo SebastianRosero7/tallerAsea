@@ -22,7 +22,11 @@ public class GestionarDocentesGatewayAdapter implements GestionarDocentesGateway
 
     @Override
     public List<DocenteEntity> listarDocenteByGrupo(String nombreGrupo, String patron) {
-        return repository.findByNombreGrupoAndApellidosStartingWithIgnoreCase(nombreGrupo, patron);
+        return repository.findByNombreGrupoAndApellidosDocenteStartingWithIgnoreCaseOrderByApellidosDocenteAsc(nombreGrupo, patron);
+    }
+    @Override
+    public List<DocenteEntity> listarFormatosAByDocente(String nombreDocente){
+        return repository.findByNombresDocenteContainsIgnoreCase(nombreDocente);
     }
 
     @Override

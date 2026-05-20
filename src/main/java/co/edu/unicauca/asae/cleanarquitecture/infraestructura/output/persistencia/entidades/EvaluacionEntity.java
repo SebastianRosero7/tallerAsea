@@ -14,10 +14,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "evaluaciones")
-@Data
+@Getter
+@Setter
 public class EvaluacionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

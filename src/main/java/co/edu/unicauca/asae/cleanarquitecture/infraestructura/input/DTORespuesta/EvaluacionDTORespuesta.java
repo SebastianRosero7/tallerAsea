@@ -4,14 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HistoricoDTORespuesta {
-    private int idHistorico;
-    private int activo;
-    private String fechaInicio;
-    private String fechaFin;
-    private Long objRol;
-    private Long objDocente;
+public class EvaluacionDTORespuesta {
+    private int idEvaluacion;
+    private String concepto;
+    private Date fechaRegistroConcepto;
+    private String nombreCoordinador;
+
 }

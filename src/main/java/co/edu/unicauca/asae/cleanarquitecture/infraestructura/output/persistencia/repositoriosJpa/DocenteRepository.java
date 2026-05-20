@@ -11,6 +11,8 @@ import org.springframework.data.repository.query.Param;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.DocenteEntity;
 import org.springframework.stereotype.Repository;
 
+import javax.print.Doc;
+
 @Repository
 public interface DocenteRepository extends JpaRepository<DocenteEntity,Long> {
     @Query("SELECT DISTINCT d FROM DocenteEntity d " +
@@ -45,4 +47,10 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity,Long> {
             @Param("nombreGrupo") String nombreGrupo,
             @Param("patron") String patron
     );
+
+    @Query("SELECT d FROM DocenteEntity d " +
+            "WHERE lower(d.nombresDocente) = lower(:nombreDocente)")
+    List<DocenteEntity> findByNombresDocente(String nombreDocente);
+
+    List<DocenteEntity> findByNombresDocenteContainsIgnoreCase(String nombreDocente);
 }

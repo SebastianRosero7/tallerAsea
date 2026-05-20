@@ -5,11 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "formatos_pp_a")
 @PrimaryKeyJoinColumn(name = "idFormatoPP")
-@Data
+@Getter
+@Setter
 public class FormatoPPEntity extends FormatoAEntity{
 
     @Column(name = "nombre_asesor",length = 100)
