@@ -46,7 +46,7 @@ public class GestionarDocentesGatewayAdapter implements GestionarDocentesGateway
 
     @Override
     public Long correoDocenteExiste(String correo) {
-        return repository.docenteExiste(correo);
+        return repository.existeCorreoDocente(correo);
     }
 
     @Override

@@ -1,6 +1,9 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.repositorioGateway;
 
 
+import java.nio.file.OpenOption;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +35,16 @@ public class GestionarFormatoAGatewayAdapter implements GestionarFormatosAGatewa
     @Override
     public boolean existeFormatoId(Long idFormato) {
         return repository.existsById(idFormato);
+    }
+
+    @Override
+    public Optional<FormatoAEntity> formatoADetalles(String titulo) {
+        return repository.formatoADetails(titulo);
+    }
+
+    @Override
+    public Optional<FormatoAEntity> findById(Long id) {
+        return repository.findById(id);
     }
 
 
