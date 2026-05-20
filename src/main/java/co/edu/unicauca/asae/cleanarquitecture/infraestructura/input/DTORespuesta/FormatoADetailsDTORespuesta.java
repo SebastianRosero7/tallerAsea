@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FormatoADetailsDTORespuesta {
     private String titulo;
-    private List<EvaluacionesDTORespuesta> evaluaciones = new ArrayList<>();
+    private List<EvaluacioneQuery1DTORespuesta> evaluaciones = new ArrayList<>();
 
 }

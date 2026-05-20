@@ -36,7 +36,7 @@ public class InitializeDatabase implements CommandLineRunner {
     @Override
     @Transactional  // ← Ahora funciona correctamente con CommandLineRunner
     public void run(String... args) throws Exception {
-        initializedb();
+        //initializedb();
     }
 
     private void initializedb(){

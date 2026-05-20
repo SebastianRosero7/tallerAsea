@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +29,7 @@ import lombok.AllArgsConstructor;
 @CrossOrigin(origins = "http://localhost:4200/")
 @Validated
 public class FormatoARestController {
-
+    @Autowired
     private GestionarFormatosACUIntPort service;
 
     @PostMapping()

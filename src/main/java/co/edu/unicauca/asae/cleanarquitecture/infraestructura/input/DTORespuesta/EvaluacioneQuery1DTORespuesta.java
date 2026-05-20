@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EvaluacionesDTORespuesta {
+public class EvaluacioneQuery1DTORespuesta {
 
     private String concepto;
 

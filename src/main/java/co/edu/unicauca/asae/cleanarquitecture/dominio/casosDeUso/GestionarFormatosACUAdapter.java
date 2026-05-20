@@ -22,7 +22,7 @@ import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.FormatoTI;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoADTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoPPDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoTIDTOPeticion;
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.EvaluacionesDTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.EvaluacioneQuery1DTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADetailsDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.ObservacionDTORespuesta;
@@ -120,7 +120,7 @@ public class GestionarFormatosACUAdapter implements GestionarFormatosACUIntPort 
         respuesta.setTitulo(tituloFormato);
 
         for (EvaluacionEntity evaluacionEntity : formato.getEvaluaciones()) {
-            EvaluacionesDTORespuesta evaluacionRespuesta = new EvaluacionesDTORespuesta();
+            EvaluacioneQuery1DTORespuesta evaluacionRespuesta = new EvaluacioneQuery1DTORespuesta();
             evaluacionRespuesta.setConcepto(evaluacionEntity.getConcepto());
             evaluacionRespuesta.setFechaRegistroConcepto(evaluacionEntity.getFechaRegistroConcepto());
 
