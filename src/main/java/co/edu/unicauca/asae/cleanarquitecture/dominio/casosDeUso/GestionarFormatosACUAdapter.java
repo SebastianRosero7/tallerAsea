@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarFormatosACUIntPort;
@@ -21,12 +22,17 @@ import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.FormatoTI;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoADTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoPPDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoTIDTOPeticion;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.EvaluacionesDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADetailsDTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.ObservacionDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.mappers.FormatoAMapper;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.DocenteEntity;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.EvaluacionEntity;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.FormatoAEntity;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.FormatoPPEntity;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.FormatoTIEntity;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.ObservacionEntity;
 
 @Service
 public class GestionarFormatosACUAdapter implements GestionarFormatosACUIntPort {
@@ -101,5 +107,38 @@ public class GestionarFormatosACUAdapter implements GestionarFormatosACUIntPort 
         return Optional.empty();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<FormatoADetailsDTORespuesta> listarFormatoADetalles(String tituloFormato) {
+        FormatoAEntity formato = formatosAGatewayIntPort.formatoADetalles(tituloFormato).orElseThrow(() -> 
+            new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Error de dominio, el formato no existe"
+            ));
 
+        FormatoADetailsDTORespuesta respuesta = new FormatoADetailsDTORespuesta();
+        respuesta.setTitulo(tituloFormato);
+
+        for (EvaluacionEntity evaluacionEntity : formato.getEvaluaciones()) {
+            EvaluacionesDTORespuesta evaluacionRespuesta = new EvaluacionesDTORespuesta();
+            evaluacionRespuesta.setConcepto(evaluacionEntity.getConcepto());
+            evaluacionRespuesta.setFechaRegistroConcepto(evaluacionEntity.getFechaRegistroConcepto());
+
+            for (ObservacionEntity observacionEntity : evaluacionEntity.getObservaciones()) {
+                
+                ObservacionDTORespuesta observacionRespuesta = new ObservacionDTORespuesta();
+                observacionRespuesta.setObservcion(observacionEntity.getObservcion());
+                observacionRespuesta.setFechaRegistro(observacionEntity.getFechaRegistro());
+                observacionRespuesta.setTitulo(tituloFormato);
+                
+                for (DocenteEntity docenteEntity : observacionEntity.getDocentes()) {
+                    observacionRespuesta.getNombreDocente().add(docenteEntity.getNombresDocente());
+                    
+                }
+                evaluacionRespuesta.getObservaciones().add(observacionRespuesta);
+            }
+            respuesta.getEvaluaciones().add(evaluacionRespuesta);
+        }
+        return Optional.of(respuesta);
+    }
 }

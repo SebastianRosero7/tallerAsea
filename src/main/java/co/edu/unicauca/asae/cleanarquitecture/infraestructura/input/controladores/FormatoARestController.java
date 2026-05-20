@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarFormatosACUIntPort;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoADTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADetailsDTORespuesta;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -56,9 +57,10 @@ public class FormatoARestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/query1")
-    public ResponseEntity<Collection<FormatoADTORespuesta>> query1() throws Exception {
-        throw new Exception("No se ha implementado la consulta");
+    @GetMapping("/formatosADetails")
+    public ResponseEntity<Optional<FormatoADetailsDTORespuesta>> formatoADetails(@RequestParam String tituloFormato){
+        Optional<FormatoADetailsDTORespuesta> respuesta = service.listarFormatoADetalles(tituloFormato);
+        return ResponseEntity.ok(respuesta);
     }
 
 }
