@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ObservacionDTOPeticion {
 
-    @NotBlank(message = "la observacion no puede estar vacia")
+    @NotBlank(message = "{error.observacion.observacion.empty}")
     private String observacion;
-    @NotNull(message = "debe existir un formato")
+    @NotNull(message = "{error.observacion.formato.null}")
     private Long idFormato;
-    @NotEmpty(message = "debe relacionar los docentes")
+    @NotEmpty(message = "{error.observacion.docente.empy}")
     private List<Long> idDocentes;
 
-    @NotBlank
+    @NotBlank(message = "{error.observacion.coordinador.empty}")
     private String nombreCordinador;
 }

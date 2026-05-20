@@ -8,6 +8,6 @@ import java.util.Collection;
 
 public interface GestionarDocentesCUIntPort {
     public DocenteDTORespuesta crear(DocenteDTOPeticion docente);
-    public Collection<DocenteDTORespuesta> listarDocentes(String nombreGrupo, String patron, String nombreDocente);
+    public Collection<DocenteDTORespuesta> listarDocentes(String nombreGrupo, String patron, String nombreDocente, String nombreRol);
     public DocenteDTORespuesta findById(Long id);
 }

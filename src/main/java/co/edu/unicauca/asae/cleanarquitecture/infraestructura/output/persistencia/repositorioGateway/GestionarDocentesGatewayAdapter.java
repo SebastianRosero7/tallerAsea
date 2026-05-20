@@ -30,6 +30,11 @@ public class GestionarDocentesGatewayAdapter implements GestionarDocentesGateway
     }
 
     @Override
+    public List<DocenteEntity> listarDocentesByRol(String nombreRol) {
+        return repository.findByRol(nombreRol);
+    }
+
+    @Override
     public List<DocenteEntity> listarTodo() {
         return repository.findAll();
     }

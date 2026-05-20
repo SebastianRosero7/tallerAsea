@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class FormatoPPDTOPeticion extends FormatoADTOPeticion {
-    @NotBlank
+    @NotBlank(message = "{error.formato.path.null}")
     private String ruta_carta_aceptacion;
-    @NotBlank
+    @NotBlank(message = "{error.formato.asesor.null}")
     private String nombreAsesor;
     @NotBlank(message = "El estudiante uno es obligatorio")
     private String nombreEstudiante1;

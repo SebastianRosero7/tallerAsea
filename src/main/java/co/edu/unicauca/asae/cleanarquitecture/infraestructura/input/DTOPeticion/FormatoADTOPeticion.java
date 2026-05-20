@@ -1,6 +1,7 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion;
 
 
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.configuracion.anotacion.ObjetivoValido;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -21,14 +22,16 @@ import lombok.NoArgsConstructor;
 })
 public class FormatoADTOPeticion {
     
-    @NotBlank(message = "El titulo es obligatorio")
+    @NotBlank(message = "{error.formato.title.empty}")
     private String titulo;
-    @NotBlank(message = "El objetivo general es obligatorio")
+    @NotBlank(message = "{error.formato.objetivo.empty}")
+    @ObjetivoValido(message = "{error.formato.objetivo.invalid}")
     private String objetivoGeneral;
-    @NotBlank(message = "Los objetivos especificos son obligatorio")
-    @Size(min = 10, message = "Minimo 3 objetivos especificos")
+    @NotBlank(message = "{error.formato.objetivo_especifico.empty}")
+    @Size(min = 3, message = "{error.formato.objetivo_especifico.invalid}")
+    @Size(min = 10, message = "{error.formato.objetivo_especifico.min_size}")
     private String objetivosEspecificos;
-    @NotNull
+    @NotNull(message = "{error.formato.docente.null}")
     private Long idDocente;
 
 }

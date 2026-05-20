@@ -53,4 +53,11 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity,Long> {
     List<DocenteEntity> findByNombresDocente(String nombreDocente);
 
     List<DocenteEntity> findByNombresDocenteContainsIgnoreCase(String nombreDocente);
+
+    @Query("SELECT d FROM DocenteEntity d " +
+           "JOIN d.historicos h " +
+           "JOIN h.objRol r " +
+           "WHERE lower(r.roleAsignado) = lower(:nombreRol)")
+    List<DocenteEntity> findByRol(String nombreRol);
+
 }

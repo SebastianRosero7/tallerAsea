@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class FormatoTIDTOPeticion extends FormatoADTOPeticion {
 
-    @NotBlank(message = "El estudiante uno es obligatorio")
+    @NotBlank(message = "{error.formato.estudiante1.null}")
     private String nombreEstudiante1;
-    @NotBlank(message = "El estudiante dos es obligatorio")
+    @NotBlank(message = "{error.formato.estudiante2.null}")
     private String nombreEstudiante2;
 
 }

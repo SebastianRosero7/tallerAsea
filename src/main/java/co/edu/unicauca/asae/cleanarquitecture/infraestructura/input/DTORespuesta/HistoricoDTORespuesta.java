@@ -12,6 +12,6 @@ public class HistoricoDTORespuesta {
     private int activo;
     private String fechaInicio;
     private String fechaFin;
-    private Long objRol;
+    private RolDTORespuesta objRol;
     private Long objDocente;
 }

@@ -4,6 +4,7 @@ import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.HistoricoDTORespuesta;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.RolDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.DocenteEntity;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.HistoricoEntity;
 import org.springframework.beans.factory.annotation.Autowired;

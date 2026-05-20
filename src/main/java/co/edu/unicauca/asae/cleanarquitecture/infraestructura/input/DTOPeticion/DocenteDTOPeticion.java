@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DocenteDTOPeticion {
 
-    @NotBlank(message = "El nombre del docente es obligatorio")
+    @NotBlank(message = "{error.docente.name.empty}")
     private String nombresDocente;
 
-    @NotBlank(message = "El apellido del docente es obligatorio")
+    @NotBlank(message = "{error.docente.last_name.empty}")
     private String apellidosDocente;
 
-    @NotBlank(message = "El nombre del grupo es obligatorio")
+    @NotBlank(message = "{error.docente.grupo.empty}")
     private String nombreGrupo;
 
-    @NotBlank(message = "El correo del docente es obligatorio")
-    @Email(message = "El correo del docente debe ser una dirección de correo electrónico válida")
+    @NotBlank(message = "{error.docente.email.empty}")
+    @Email(message = "{error.docente.email.invalid}")
     private String correo;
 
 }

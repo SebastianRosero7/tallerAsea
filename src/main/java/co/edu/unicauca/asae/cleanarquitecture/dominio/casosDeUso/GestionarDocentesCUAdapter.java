@@ -2,6 +2,7 @@ package co.edu.unicauca.asae.cleanarquitecture.dominio.casosDeUso;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class GestionarDocentesCUAdapter implements GestionarDocentesCUIntPort {
     }
 
     @Override
-    public Collection<DocenteDTORespuesta> listarDocentes(String nombreGrupo, String patron, String nombreDocente) {
+    public Collection<DocenteDTORespuesta> listarDocentes(String nombreGrupo, String patron, String nombreDocente, String nombreRol) {
         if(nombreGrupo != null || patron != null){
             List<DocenteEntity> docentes = docentesGatewayIntPort.listarDocenteByGrupo(nombreGrupo, patron);
             return docentes.isEmpty() ? List.of() : docentes.stream()
@@ -45,11 +46,19 @@ public class GestionarDocentesCUAdapter implements GestionarDocentesCUIntPort {
                     .toList();
         } else if (nombreDocente != null) {
             List<DocenteEntity> docentes = docentesGatewayIntPort.listarFormatosAByDocente(nombreDocente);
-            return docentes.isEmpty() ? List.of() : docentes.stream()
+            if (docentes.isEmpty()) {
+                throw new NoSuchElementException("No se encontraron docentes con el nombre proporcionado");
+            }
+            return docentes.stream()
                     .map(docenteMapper::toDTORespuesta)
                     .toList();
             
+        } else if (nombreRol != null) {
+            return docentesGatewayIntPort.listarDocentesByRol(nombreRol).stream()
+                    .map(docenteMapper::toDTORespuesta)
+                    .toList();
         }
+
         return docentesGatewayIntPort.listarTodo().stream()
                 .map(docenteMapper::toDTORespuesta)
                 .toList();

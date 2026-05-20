@@ -54,7 +54,7 @@ public class InitializeDatabase implements CommandLineRunner {
         rolDocente.setHistoricos(new ArrayList<>());
         
         RolEntity rolRevisor = new RolEntity();
-        rolRevisor.setRoleAsignado("REVISOR");
+        rolRevisor.setRoleAsignado("MIEMBRO_DE_COMITE");
         rolRevisor.setHistoricos(new ArrayList<>());
         
         RolEntity rolDirector = new RolEntity();
