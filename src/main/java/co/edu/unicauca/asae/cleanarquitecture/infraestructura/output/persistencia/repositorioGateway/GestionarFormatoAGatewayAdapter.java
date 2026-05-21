@@ -2,6 +2,7 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistenc
 
 
 import java.nio.file.OpenOption;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class GestionarFormatoAGatewayAdapter implements GestionarFormatosAGatewa
     @Override
     public Optional<FormatoAEntity> findById(Long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<FormatoAEntity> formatosByDocente(String nombreDocente) {
+        return repository.findByObjDocenteNombresDocenteIgnoreCase(nombreDocente);
     }
 
 

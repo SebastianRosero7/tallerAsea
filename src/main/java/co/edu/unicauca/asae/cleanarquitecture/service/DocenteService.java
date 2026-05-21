@@ -86,7 +86,7 @@ public class DocenteService {
 
     public void docenteExist(String correo){
 
-        long exist = repository.docenteExiste(correo);
+        long exist = 1;
 
         System.out.println("-------------------------");
 

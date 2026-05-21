@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarFormatosACUIntPort;
 import co.edu.unicauca.asae.cleanarquitecture.dominio.modelo.EstadoEnum;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.ActualizarFormatoADTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTOPeticion.FormatoADTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.DTORespuesta.FormatoADetailsDTORespuesta;
@@ -44,6 +44,11 @@ public class FormatoARestController {
         Optional<FormatoADTORespuesta> respuesta = service.findById(id);
         return respuesta.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PatchMapping("/{id}/actualizar")
+    public ResponseEntity<FormatoADTORespuesta> actualizar(@PathVariable Long id, @RequestBody ActualizarFormatoADTOPeticion formato){
+        return ResponseEntity.ok(service.actualizar(id, formato));
     }
 
     @GetMapping("/rango-fechas")
@@ -77,6 +82,12 @@ public class FormatoARestController {
     @PatchMapping("/{id}/estado")
     public ResponseEntity<FormatoADTORespuesta> agregarEstado(@PathVariable Long id, @RequestParam EstadoEnum estado){
         return ResponseEntity.ok(service.agregarEstado(id, estado));
+    }
+
+    @GetMapping("/docente")
+    public ResponseEntity<Collection<FormatoADetailsDTORespuesta>> formatosByDocente(@RequestParam String nombreDocente){
+        Collection<FormatoADetailsDTORespuesta> respuesta = service.formatosByDocente(nombreDocente);
+        return ResponseEntity.ok(respuesta);
     }
 
 }
